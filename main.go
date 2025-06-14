@@ -15,6 +15,6 @@ func main() {
 
 	futureValuesadjusted := futureValues / math.Pow(1+inflationRate/100, float64(years))
 	fmt.Printf("Future value adjusted for inflation: %.2f\n", futureValuesadjusted)
-	fmt.Println("Hello world")
+	fmt.Println("Hello Deshpandey, welcome to Go programming!")
 
 }
