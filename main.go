@@ -2,25 +2,25 @@ package main
 
 import (
 	"fmt"
-	"math"
 )
 
 func main() {
-	const inflationRate float64 = 6.5
-	var investment float64 = 1000
-	var years float32
-	returns := 5.5
-	fmt.Print("Investment Calculator Enter your amount here: ")
-	// scanning the function for the input
-	fmt.Scan(&investment)
-	// This is a pointer to the investment variable
-	fmt.Print("Enter years of investment: ")
-	fmt.Scan(&years)
-	fmt.Print("Enter expected returns in percentage: ")
-	fmt.Scan(&returns)
-	futureValues := investment * math.Pow(1+returns/100, float64(years))
-	fmt.Printf("Future value of the investment: %.2f\n", futureValues)
+	var revenue float64
+	var expenses float64
+	var taxRate float64
+	fmt.Print("Enter the revenue: ")
+	fmt.Scan(&revenue)
+	fmt.Print("Enter the expenses: ")
+	fmt.Scan(&expenses)
+	fmt.Print("Enter the tax rate (as a percentage): ")
+	fmt.Scan(&taxRate)
 
-	futureValuesadjusted := futureValues / math.Pow(1+inflationRate/100, float64(years))
-	fmt.Printf("Future value adjusted for inflation: %.2f\n", futureValuesadjusted)
+	EBT := revenue - expenses
+	fmt.Printf("The Earnings Before Tax (EBT) is: %.2f\n", EBT)
+	TaxrateDecimal := taxRate / 100
+	profit := EBT * (1 - TaxrateDecimal)
+	fmt.Printf("The profit after tax is: %.2f\n", profit)
+	ratio := profit / revenue
+	fmt.Printf("The profit margin is: %.2f%%\n", ratio*100)
+
 }
