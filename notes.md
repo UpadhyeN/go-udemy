@@ -10,3 +10,18 @@ Note: that you need to pass teh pointer to the variable and not the variable its
 	fmt.Scan(&investment)
 	// This is a pointer to the i
 ```
+
+use <variable Name>  := fmt.Sprintf() to store the formatted variable into the file
+
+## Functions in go
+- Code on demand blocks
+
+```
+func returnvalue(a int) (square int, cube int) {
+	square = a * a
+	cube = a * a * a
+	return
+}
+
+```
+Return various values
