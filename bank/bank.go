@@ -3,18 +3,32 @@ package main
 import (
 	"fmt"
 	"os"
+	"strconv"
 )
 
 func WritebalanceToFile(balance float64) error {
 	balanceData := fmt.Sprint(balance)
 	return os.WriteFile("balance.txt", []byte(balanceData), 0644)
-
+}
+func ReadBalanceFromFile() (float64, error) {
+	data, err := os.ReadFile("balance.txt")
+	if err != nil {
+		return 0, err
+	}
+	balance, err := strconv.ParseFloat(string(data), 64)
+	if err != nil {
+		return 0, err
+	}
+	return balance, nil
 }
 
 func main() {
 
-	var balance float64 = 1000.00 // initial balance
-	// for will be infinite loop
+	balance, err := ReadBalanceFromFile()
+	if err != nil {
+		fmt.Println("Could not read balance from file. Setting initial balance to 0.")
+		balance = 0.0
+	}
 	for {
 		fmt.Println("Welcome to Bank Application")
 		fmt.Println("Please select an option from the menu below:")
