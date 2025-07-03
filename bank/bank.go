@@ -1,6 +1,7 @@
 package main
 
 import (
+	"errors"
 	"fmt"
 	"os"
 	"strconv"
@@ -13,7 +14,7 @@ func WritebalanceToFile(balance float64) error {
 func ReadBalanceFromFile() (float64, error) {
 	data, err := os.ReadFile("balance.txt")
 	if err != nil {
-		return 0, err
+		return 0, errors.New("could not read balance from file")
 	}
 	balance, err := strconv.ParseFloat(string(data), 64)
 	if err != nil {
@@ -63,7 +64,8 @@ func main() {
 			fmt.Scanln(&withdrawAmount)
 			if withdrawAmount <= 0 {
 				fmt.Println("Withdraw amount cannot be negative!")
-				continue
+				panic("Are you nuts??")
+				//continue
 			}
 			if withdrawAmount > balance {
 				fmt.Println("Insufficient balance!")

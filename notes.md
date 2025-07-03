@@ -27,3 +27,5 @@ func returnvalue(a int) (square int, cube int) {
 Return various values
 
 use return to brekout
+
+Use panic to return an exit the code. 
