@@ -21,10 +21,10 @@ func main() {
 		fmt.Scanln(&choice)
 		fmt.Println("You selected option:", choice)
 
-		if choice == 1 {
+		switch choice {
+		case 1:
 			fmt.Println("Checking balance...", balance)
-
-		} else if choice == 2 {
+		case 2:
 			fmt.Print("Enter the amount to deposit: ")
 			var depositeAmount float64
 			fmt.Scanln(&depositeAmount)
@@ -32,10 +32,9 @@ func main() {
 				fmt.Println("Deposit amount cannot be negative!")
 				continue
 			}
-
 			balance = balance + depositeAmount
 			fmt.Println("New balance after deposit is:", balance)
-		} else if choice == 3 {
+		case 3:
 			fmt.Print("Enter the amount to withdraw: ")
 			var withdrawAmount float64
 			fmt.Scanln(&withdrawAmount)
@@ -49,9 +48,10 @@ func main() {
 				balance = balance - withdrawAmount
 				fmt.Println("New balance after withdrawal is:", balance)
 			}
-		} else {
+		case 4:
 			fmt.Println("Exiting the application. Thank you!")
-			continue
+		default:
+			fmt.Println("Invalid option. Please try again.")
 		}
 	}
 }
