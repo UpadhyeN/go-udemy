@@ -2,7 +2,14 @@ package main
 
 import (
 	"fmt"
+	"os"
 )
+
+func WritebalanceToFile(balance float64) error {
+	balanceData := fmt.Sprint(balance)
+	return os.WriteFile("balance.txt", []byte(balanceData), 0644)
+
+}
 
 func main() {
 
@@ -24,6 +31,7 @@ func main() {
 		switch choice {
 		case 1:
 			fmt.Println("Checking balance...", balance)
+			WritebalanceToFile(balance)
 		case 2:
 			fmt.Print("Enter the amount to deposit: ")
 			var depositeAmount float64
@@ -34,6 +42,7 @@ func main() {
 			}
 			balance = balance + depositeAmount
 			fmt.Println("New balance after deposit is:", balance)
+			WritebalanceToFile(balance)
 		case 3:
 			fmt.Print("Enter the amount to withdraw: ")
 			var withdrawAmount float64
@@ -48,8 +57,10 @@ func main() {
 				balance = balance - withdrawAmount
 				fmt.Println("New balance after withdrawal is:", balance)
 			}
+			WritebalanceToFile(balance)
 		case 4:
 			fmt.Println("Exiting the application. Thank you!")
+			return
 		default:
 			fmt.Println("Invalid option. Please try again.")
 		}
