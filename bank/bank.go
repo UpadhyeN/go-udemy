@@ -21,16 +21,26 @@ func main() {
 
 	if choice == 1 {
 		fmt.Println("Checking balance...", balance)
+
 	} else if choice == 2 {
 		fmt.Print("Enter the amount to deposit: ")
 		var depositeAmount float64
 		fmt.Scanln(&depositeAmount)
+		if depositeAmount <= 0 {
+			fmt.Println("Deposit amount cannot be negative!")
+			return
+		}
+
 		balance = balance + depositeAmount
 		fmt.Println("New balance after deposit is:", balance)
 	} else if choice == 3 {
 		fmt.Print("Enter the amount to withdraw: ")
 		var withdrawAmount float64
 		fmt.Scanln(&withdrawAmount)
+		if withdrawAmount <= 0 {
+			fmt.Println("Withdraw amount cannot be negative!")
+			return
+		}
 		if withdrawAmount > balance {
 			fmt.Println("Insufficient balance!")
 		} else {
